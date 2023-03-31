@@ -1,11 +1,3 @@
-/**
-* Template Name: Bootslander
-* Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -52,8 +44,8 @@ h6 {
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid #1acc8d;
-  border-top-color: #d2f9eb;
+  border: 6px solid #d19c21;
+  border-top-color: #f2b830;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -437,7 +429,7 @@ h6 {
 }
 
 #hero h1 span {
-  color: #633B1C ;
+  color: #633B1C;
   /* border-bottom: 4px solid #633B1C; */
 }
 
@@ -456,16 +448,18 @@ h6 {
   padding: 10px 30px;
   border-radius: 50px;
   transition: 0.5s;
-  color: #dbd1b3 ;
+  color: #dbd1b3;
   background: #633B1C;
 }
 
 #hero .btn-get-started:hover {
   background: #774824;
 }
-#hero .hero-img{
+
+#hero .hero-img {
   margin: 50px;
 }
+
 #hero .animated {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
@@ -691,6 +685,7 @@ section {
 --------------------------------------------------------------*/
 .about {
   padding: 40px 0 0 0;
+  margin-bottom: 200px;
 }
 
 .about .icon-boxes h3 {
@@ -1494,7 +1489,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #010351;
+  background: #333;
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
@@ -1506,9 +1501,9 @@ section {
 
 #footer .footer-top .footer-info {
   margin-bottom: 15px;
-  background: #010246;
+  background: #1f1f1f;
   color: #fff;
-  border-top: 4px solid #1acc8d;
+  border-top: 4px solid #dbd1b3;
   text-align: center;
   padding: 30px 20px;
 }
@@ -1543,7 +1538,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #1acc8d;
+  background: #e6ac27;
   color: #fff;
   text-decoration: none;
 }
@@ -1568,7 +1563,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #61ebba;
+  color: #e6ac27;
   font-size: 18px;
   line-height: 1;
 }
@@ -1591,7 +1586,7 @@ section {
 }
 
 #footer .footer-top .footer-links ul a:hover {
-  color: #4be8b0;
+  color: #e6ac27;
 }
 
 #footer .footer-top .footer-newsletter form {
@@ -1602,7 +1597,7 @@ section {
   border-radius: 50px;
 }
 
-#footer .footer-top .footer-newsletter form input[type=email] {
+#footer .footer-top .footer-newsletter form input[type=text] {
   border: 0;
   padding: 4px;
   width: calc(100% - 110px);
@@ -1617,18 +1612,18 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #1acc8d;
+  background: #e6ac27;
   color: #fff;
   transition: 0.3s;
   border-radius: 50px;
 }
 
 #footer .footer-top .footer-newsletter form input[type=submit]:hover {
-  background: #149f6e;
+  background: #d19c21;
 }
 
 #footer .copyright {
-  border-top: 1px solid #010479;
+  border-top: 1px solid #181818;
   text-align: center;
   padding-top: 30px;
 }
@@ -1640,6 +1635,10 @@ section {
   color: #fff;
 }
 
+#footer .credits a {
+  color: #e6ac27;
+}
+
 @media (max-width: 575px) {
   #footer .footer-top .footer-info {
     margin: -20px 0 30px 0;
@@ -1647,7 +1646,7 @@ section {
 }
 
 
-.leitores{
+.leitores {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1660,7 +1659,7 @@ section {
   margin-bottom: 10px;
 }
 
-.leitor-nome{
+.leitor-nome {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1669,28 +1668,31 @@ section {
   margin-top: 10px;
 }
 
-.leitores img{
+.leitores img {
   width: 60px;
   height: 60px;
   border-radius: 100%;
 }
-.podium-div{
+
+.podium-div {
   gap: 50px;
 }
-.rank img{
+
+.rank img {
   width: 200px;
   height: 200px;
   margin-bottom: 30px;
   border-radius: 100%;
 }
-.rank{
+
+.rank {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 
-.podiumrank1{
+.podiumrank1 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #80bca3;
   height: 250px;
@@ -1703,7 +1705,7 @@ section {
   font-size: 78px;
 }
 
-.podiumrank2{
+.podiumrank2 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #e6ac27;
   height: 150px;
@@ -1716,7 +1718,7 @@ section {
   font-size: 78px;
 }
 
-.podiumrank3{
+.podiumrank3 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #bf4d28;
   height: 100px;
@@ -1729,57 +1731,233 @@ section {
   font-size: 78px;
 }
 
-.top{
+.top {
   display: flex;
   flex-direction: row;
   align-items: end;
   justify-content: center;
 }
-.podium-div{
+
+.podium-div {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 @media (max-width: 768px) {
-  .podium-div{
+  .podium-div {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .leitores{
+
+  .leitores {
     gap: 30px;
   }
-  .podiumrank1{
+
+  .podiumrank1 {
     height: 130px;
     width: 130px;
   }
-  .podiumrank2{
+
+  .podiumrank2 {
     height: 100px;
     width: 120px;
   }
-  .podiumrank3{
+
+  .podiumrank3 {
     height: 80px;
     width: 120px;
   }
 
-  .rank img{
+  .rank img {
     width: 100px;
     height: 100px;
   }
 }
 
-.about-div{
+
+
+.about-div {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.about-text h2{
+.about-text h2 {
   margin: 0 0 20px 0;
   font-size: 38px;
   font-weight: 700;
   line-height: 56px;
   color: rgba(2, 2, 2, 0.8);
   max-width: 600px;
+}
+
+.login-nav {
+  background-color: #e6ac27;
+  border: none;
+  border-radius: 30px;
+  margin-left: 20px;
+}
+
+.login-nav:hover {
+
+  background-color: #f1b01a;
+  transition: all 0.2s;
+}
+
+.login-nav a {
+  padding: 10px 20px 10px 20px;
+}
+
+.login-nav a:hover {
+  color: #fff;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login .content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.login-page {
+  padding: 8% 0 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page .form form {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #d19c21;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+#sd{
+  max-width: 600px;
+}
+.form button:hover,
+.form button:active,
+.form button:focus {
+  transition: all 0.3s;
+  background: #e6ac27;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.form .message a {
+  color: #d19c21;
+  text-decoration: none;
+}
+
+.login .form .title {
+  border-bottom: 1px solid #3333332d;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.login .form .title h2 {
+  font-weight: 600;
+}
+
+.login-img img {
+  width: 400px;
+  margin-top: 20%;
+}
+
+.button-wrapper {
+  position: relative;
+  width: 150px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.button-wrapper span.label {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  background: #d19c21;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 0;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+#upload {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.input-file{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.input-file .text-input p{
+  color: #333;
+  font-size: 15px;
 }
