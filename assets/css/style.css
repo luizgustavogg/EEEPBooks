@@ -457,7 +457,7 @@ h6 {
 }
 
 #hero .hero-img {
-  margin: 50px;
+  margin: 30px;
 }
 
 #hero .animated {
@@ -1679,8 +1679,8 @@ section {
 }
 
 .rank img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin-bottom: 30px;
   border-radius: 100%;
 }
@@ -1696,7 +1696,7 @@ section {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #80bca3;
   height: 250px;
-  width: 250px;
+  width: 190px;
   display: flex;
   flex-direction: center;
   align-items: center;
@@ -1709,7 +1709,7 @@ section {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #e6ac27;
   height: 150px;
-  width: 250px;
+  width: 190px;
   display: flex;
   flex-direction: center;
   align-items: center;
@@ -1722,7 +1722,7 @@ section {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #bf4d28;
   height: 100px;
-  width: 250px;
+  width: 190px;
   display: flex;
   flex-direction: center;
   align-items: center;
@@ -1818,6 +1818,8 @@ section {
 .login {
   display: flex;
   justify-content: center;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
@@ -1827,6 +1829,7 @@ section {
   justify-content: center;
   align-items: center;
   gap: 100px;
+  height: 80vh;
 }
 
 .login-page {
@@ -1882,9 +1885,11 @@ section {
   transition: all 0.3 ease;
   cursor: pointer;
 }
-#sd{
+
+#sd {
   max-width: 600px;
 }
+
 .form button:hover,
 .form button:active,
 .form button:focus {
@@ -1934,30 +1939,66 @@ section {
   cursor: pointer;
   color: #fff;
   padding: 10px 0;
-  text-transform:uppercase;
-  font-size:12px;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 #upload {
-    display: inline-block;
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 50px;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
-.input-file{
+.input-file {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
 }
 
-.input-file .text-input p{
+.input-file .text-input p {
   color: #333;
   font-size: 15px;
 }
+
+@media(max-width:768px) {
+  .login .content {
+    flex-direction: column;
+    height: 80vh;
+  }
+
+  .login-img img {
+    display: none;
+  }
+  .login-page  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 320px;
+    margin-top: 100px;
+  }
+}
+
+@media( min-width: 800px){
+	.errortxt{
+		max-width: 100%;
+	}
+}
+
+.errortxt{
+	background-color: rgb(255, 156, 156);
+	padding: 10px;
+	text-align: center;
+	border-radius: 3px;
+	border: 1px solid rgb(184, 99, 99);
+	color: rgb(169, 58, 58);
+	display: none;
+	margin-bottom: 10px;
+
+  }
