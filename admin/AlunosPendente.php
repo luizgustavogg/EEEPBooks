@@ -2,54 +2,25 @@
 session_start();
 include('../include/include.php');
 $sqlentry = mysqli_query($conn, "SELECT * FROM users WHERE idUser = " . $_SESSION['idUser'] . " AND isCargo = 'admin'");
-if (mysqli_num_rows($sqlentry) > 0) {
-  $sqluser = mysqli_query($conn, "SELECT * FROM users WHERE status = 'aprovado'");
-  $user = 0;
-  while (mysqli_fetch_assoc($sqluser)) {
-    $user++;
-  }
-  $sqlivros = mysqli_query($conn, "SELECT * FROM livros");
-  $livros = 0;
-  while (mysqli_fetch_assoc($sqlivros)) {
-    $livros++;
-  }
-
-  $sqlivrosemprestado = mysqli_query($conn, "SELECT * FROM livrosemprestados");
-  $livrosemprestado = 0;
-  while (mysqli_fetch_assoc($sqlivrosemprestado)) {
-    $livrosemprestado++;
-  }
-
-  $sqlcategorias = mysqli_query($conn, "SELECT * FROM categoria");
-  $categorias = 0;
-  while (mysqli_fetch_assoc($sqlcategorias)) {
-    $categorias++;
-  }
-} else {
+if (mysqli_num_rows($sqlentry) == 0) {
   header("Location: ../index.php");
 }
 ?>
 <!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" lang="pt-br">
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EEEPBooks Dashboard</title>
+  <title>EEEPBooks Dashboard - Alunos Pendente</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
-  <link rel="stylesheet" href="../assets/style.css">
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <script src="./assets/js/init-alpine.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
-  <script src="./assets/js/charts-lines.js" defer></script>
-  <script src="./assets/js/charts-pie.js" defer></script>
 </head>
 
 <body>
-
-  <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+  <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen}">
     <!-- Desktop sidebar -->
     <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
       <div class="py-4 text-gray-500 dark:text-gray-400">
@@ -58,8 +29,7 @@ if (mysqli_num_rows($sqlentry) > 0) {
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
-            <span class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
-              aria-hidden="true"></span>
+
             <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
               href="index.php">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -96,9 +66,12 @@ if (mysqli_num_rows($sqlentry) > 0) {
              </a>
            </li>
 
+
           <li class="relative px-6 py-3">
+            <span class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
+              aria-hidden="true"></span>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="AlunosPendente.php">
+              href="tables.html">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
@@ -118,6 +91,13 @@ if (mysqli_num_rows($sqlentry) > 0) {
       x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
       class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
+    <!-- Mobile sidebar -->
+    <!-- Backdrop -->
+    <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
+      x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
     <aside class="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
       x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150"
       x-transition:enter-start="opacity-0 transform -translate-x-20" x-transition:enter-end="opacity-100"
@@ -126,12 +106,11 @@ if (mysqli_num_rows($sqlentry) > 0) {
       @keydown.escape="closeSideMenu">
       <div class="py-4 text-gray-500 dark:text-gray-400">
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="../index.php">
-          EEEPBooks
+        EEEPBooks
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
-            <span class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
-              aria-hidden="true"></span>
+
             <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
               href="index.php">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -170,13 +149,15 @@ if (mysqli_num_rows($sqlentry) > 0) {
 
 
           <li class="relative px-6 py-3">
+            <span class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
+              aria-hidden="true"></span>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="tables.php">
+              href="tables.html">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
               </svg>
-              <span class="ml-4">Tables</span>
+              <span class="ml-4">Alunos Pendentes</span>
             </a>
           </li>
         </ul>
@@ -198,92 +179,15 @@ if (mysqli_num_rows($sqlentry) > 0) {
 
         </div>
       </header>
-      <main class="h-full overflow-y-auto">
-        <div class="container px-6 mx-auto grid">
+      <main class="h-full pb-16 overflow-y-auto">
+        <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Dashboard
+            Tabela usuários
           </h2>
           <!-- CTA -->
 
-          <!-- Cards -->
-          <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-              <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
-                  </path>
-                </svg>
-              </div>
-              <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                  Total usuários Aprovado
-                </p>
-                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  <?php echo $user; ?>
-                </p>
-              </div>
-            </div>
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-              <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tv"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zM13.991 3l.024.001a1.46 1.46 0 0 1 .538.143.757.757 0 0 1 .302.254c.067.1.145.277.145.602v5.991l-.001.024a1.464 1.464 0 0 1-.143.538.758.758 0 0 1-.254.302c-.1.067-.277.145-.602.145H2.009l-.024-.001a1.464 1.464 0 0 1-.538-.143.758.758 0 0 1-.302-.254C1.078 10.502 1 10.325 1 10V4.009l.001-.024a1.46 1.46 0 0 1 .143-.538.758.758 0 0 1 .254-.302C1.498 3.078 1.675 3 2 3h11.991zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z" />
-                </svg>
-              </div>
-              <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                  Total Livros
-                </p>
-                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  <?php echo $livros; ?>
-                </p>
-              </div>
-            </div>
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-              <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-journals" viewBox="0 0 16 16">
-                  <path
-                    d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
-                  <path
-                    d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
-                </svg>
-              </div>
-              <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                  Total Livros emprestados
-                </p>
-                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  <?php echo $livrosemprestado; ?>
-                </p>
-              </div>
-            </div>
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-              <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd"
-                    d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                    clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                  Total Categorias
-                </p>
-                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  <?php echo $categorias; ?>
-                </p>
-              </div>
-            </div>
-          </div>
+          <!-- With actions -->
 
-          <!-- New Table -->
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
@@ -292,15 +196,15 @@ if (mysqli_num_rows($sqlentry) > 0) {
                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-4 py-3">Nome</th>
                     <th class="px-4 py-3">email</th>
-                    <th class="px-4 py-3">Status</th>
                     <th class="px-4 py-3">Livros Entregue</th>
                     <th class="px-4 py-3">Livro emprestado</th>
                     <th class="px-4 py-3">Conta Criada</th>
+                    <th class="px-4 py-3">Aprovar Acesso</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                   <?php
-                  $sql = mysqli_query($conn, "SELECT * FROM users WHERE status = 'aprovado'");
+                  $sql = mysqli_query($conn, "SELECT * FROM users WHERE status = 'pendente'");
                   while ($row = mysqli_fetch_assoc($sql)) {
                     $idUserLivro = $row['idUser'];
                     $sqlUserLivro = mysqli_query($conn, "SELECT * FROM livrosemprestados WHERE FK_idUser = '$idUserLivro'");
@@ -315,7 +219,7 @@ if (mysqli_num_rows($sqlentry) > 0) {
                       <span
                         class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
                       >
-                     ". $rowlivro['titulo']."
+                     " . $rowlivro['titulo'] . "
                       </span>
                     </td>";
                     } else {
@@ -361,20 +265,49 @@ if (mysqli_num_rows($sqlentry) > 0) {
                         <span
                           class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
                         >
-                        Conta " . $row['status'] . "
-                        </span>
-                      </td>
-
-                      <td class='px-4 py-3 text-xs'>
-                        <span
-                          class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
-                        >
                         Livros Entregue " . $row['livrosEntregue'] . "
                         </span>
                       </td>
-                      ". $livroemprestado ."
+                      " . $livroemprestado . "
                       <td class='px-4 py-3 text-sm'>
                       " . $row['datac'] . "
+                      </td>
+                      
+                      <td class='px-4 py-3'>
+                        <div class='flex items-center space-x-4 text-sm'>
+                        <a href='action/user/aprove.php?id=" . $row['idUser'] . "'>
+                          <button
+                            class='flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-green-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray'
+                            aria-label='Edit'
+                          >
+                          <svg xmlns='http://www.w3.org/2000/svg' 
+                          width='24' 
+                          height='24' 
+                          fill='currentColor' 
+                          class='bi bi-check-lg' 
+                          viewBox='0 0 16 16'>
+                          <path d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 
+                          0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/>
+                        </svg>
+                          </button>
+                        </a> 
+                        <a href='action/user/remove.php?id=" . $row['idUser'] . "'>
+                          <button
+                            class='flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray'
+                            aria-label='Edit'
+                          >
+                           <svg xmlns='http://www.w3.org/2000/svg' 
+                           width='24' 
+                           height='24' 
+                           fill='currentColor' 
+                           class='bi bi-x-lg' 
+                           viewBox='0 0 16 16'>
+                           <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 
+                           5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/></svg>
+                          </button>
+                        </a> 
+                          
+                        </div>
                       </td>
                     </tr>
                       ";
@@ -386,10 +319,12 @@ if (mysqli_num_rows($sqlentry) > 0) {
             <div
               class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
 
+              <span class="col-span-2"></span>
+
             </div>
           </div>
-
         </div>
+
       </main>
     </div>
   </div>
