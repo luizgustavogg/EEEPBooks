@@ -15,11 +15,16 @@ if (!empty($email) && !empty($senha)) { // Ver se o campo ta vazio
             $sql02 = mysqli_query($conn, "SELECT * FROM users WHERE email  = '$email' AND senha = '$senha'");
             if (mysqli_num_rows($sql02) == 0) { // Validar a senha do email encontrado
                 echo "Sua senha ou email está incorreta. Confira-a.";
-            }
-            if (mysqli_num_rows($sql02) == 1) { // Deu tudo certo
-                $row = mysqli_fetch_assoc($sql02);
-                $_SESSION['idUser'] = $row['idUser'];
-                echo "sucesso";
+            } elseif (mysqli_num_rows($sql02) == 1) { // Deu tudo certo
+                $stautsif = 'aprovado';
+                $sql03 = mysqli_query($conn, "SELECT * FROM users WHERE email  = '$email' AND senha = '$senha' AND status = '$stautsif'");
+                if (mysqli_num_rows($sql03) == 0) {
+                    echo "Sua conta ainda não foi aprovada";
+                } else {
+                    $row = mysqli_fetch_assoc($sql02);
+                    $_SESSION['idUser'] = $row['idUser'];
+                    echo "sucesso";
+                }
             }
         }
     } else {

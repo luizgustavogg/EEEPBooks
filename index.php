@@ -1,3 +1,25 @@
+<?php
+include('include/include.php');
+session_start();
+$result = "";
+if (!isset($_SESSION['idUser'])) {
+  $output = "<button class='login-nav'><a href='auth/login.php'>Fazer Login</a></button>";
+} else {
+
+
+  $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUser = " . $_SESSION['idUser']);
+  $row = mysqli_fetch_assoc($sql);
+  $sql02 = mysqli_query($conn, "SELECT * FROM users WHERE idUser = " . $_SESSION['idUser'] . " AND isCargo = 'admin'");
+  if (mysqli_num_rows($sql02)) {
+    $result = "<li><a class='nav-link scrollto' href='./admin/index.php'>Admin</a></li>";
+  }
+  $output = "  <a class='nav-link' href='profile/profile.php'>
+    <img src='images-user/" . $row['img'] . "' alt='' width='40px' height='40px'
+        style='border-radius: 100%'>
+</a>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -52,8 +74,9 @@
           <li><a class="nav-link scrollto" href="#gallery">Galeria</a></li>
           <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
           <li><a class="nav-link scrollto" href="#">Acervo de Livros</a></li>
+          <?php echo $result; ?>
         </ul>
-        <button class="login-nav"><a class="" href="auth/login.php">Fazer Login</a></button>
+        <?php echo $output; ?>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
