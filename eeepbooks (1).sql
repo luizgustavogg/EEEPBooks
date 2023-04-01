@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Abr-2023 às 15:57
+-- Tempo de geração: 01-Abr-2023 às 20:51
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -34,6 +34,13 @@ CREATE TABLE `categoria` (
   `titulo` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `idCategoria`, `datac`, `titulo`) VALUES
+(4, 1281841730, '01/04/2023', 'Romance');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +54,7 @@ CREATE TABLE `livros` (
   `FK_idCategoria` int(11) NOT NULL,
   `titulo` varchar(250) NOT NULL,
   `sinopse` varchar(250) NOT NULL,
+  `estoque` int(11) NOT NULL,
   `img` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -89,7 +97,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `idUser`, `isCargo`, `status`, `datac`, `livrosEntregue`, `nome`, `curso`, `email`, `senha`, `img`) VALUES
-(2, 305072752, 'admin', 'aprovado', '01/04/2023', 0, 'Luiz Gustavo', 'Informática', 'dmwkakskamkass@gmal.com', 'b4fa4d6e88e17777edbcfb3b7a829546', '1680354025logo-user.png');
+(3, 238602768, 'admin', 'aprovado', '01/04/2023', 0, 'EEEPBooks', 'Informática', 'dmwkakskamkass@gmal.com', '97f17a7dbfb2e355dcdd1ded107b95ce', '1680369812logo-user.png');
 
 --
 -- Índices para tabelas despejadas
@@ -127,7 +135,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `livros`
@@ -145,7 +153,7 @@ ALTER TABLE `livrosemprestados`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
