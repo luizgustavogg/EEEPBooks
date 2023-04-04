@@ -44,6 +44,29 @@ if (mysqli_num_rows($sqlentry) == 0) {
         </ul>
         <ul>
         <li class="relative px-6 py-3">
+          
+          <a
+            class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+            href="CadastrarLivro.php"
+          >
+            <svg
+              class="w-5 h-5"
+              aria-hidden="true"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+              ></path>
+            </svg>
+            <span class="ml-4">Livro</span>
+          </a>
+        </li>
+        <li class="relative px-6 py-3">
              <a
                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                href="CadastrarCategoria.php"
@@ -62,7 +85,7 @@ if (mysqli_num_rows($sqlentry) == 0) {
                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                  ></path>
                </svg>
-               <span class="ml-4">Cadastrar Categoria</span>
+               <span class="ml-4">Categoria</span>
              </a>
            </li>
 
@@ -71,7 +94,7 @@ if (mysqli_num_rows($sqlentry) == 0) {
             <span class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
               aria-hidden="true"></span>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="tables.html">
+              href="AlunosPendente.php">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
@@ -125,6 +148,30 @@ if (mysqli_num_rows($sqlentry) == 0) {
         </ul>
         <ul>
         <li class="relative px-6 py-3">
+          <span
+            class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
+            aria-hidden="true"
+          ></span>
+            <a
+              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              href="CadastrarLivro.php"
+            >
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+              </svg>
+              <span class="ml-4">Livro</span>
+            </a>
+          </li>
+        <li class="relative px-6 py-3">
              <a
                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                href="CadastrarCategoria.php"
@@ -143,16 +190,16 @@ if (mysqli_num_rows($sqlentry) == 0) {
                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                  ></path>
                </svg>
-               <span class="ml-4">Cadastrar Categoria</span>
+               <span class="ml-4">Categoria</span>
              </a>
            </li>
 
-
+            
           <li class="relative px-6 py-3">
             <span class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
               aria-hidden="true"></span>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="tables.html">
+              href="AlunosPendente.php">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
