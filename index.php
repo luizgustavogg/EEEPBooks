@@ -126,39 +126,64 @@ if (!isset($_SESSION['idUser'])) {
     <div class="container">
 
       <div class="row" data-aos="fade-up">
-
+        <?php
+        $sqluser = mysqli_query($conn, "SELECT * FROM users WHERE status = 'aprovado'");
+        $user = 0;
+        while (mysqli_fetch_assoc($sqluser)) {
+          $user++;
+        }
+        ?>
         <div class="col-lg-3 col-md-6">
           <div class="count-box">
             <i class="bi bi-emoji-smile"></i>
-            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $user; ?>" data-purecounter-duration="1"
               class="purecounter"></span>
             <p>Leitores</p>
           </div>
         </div>
 
+        <?php
+        $sqllivros = mysqli_query($conn, "SELECT * FROM livros");
+        $livros = 0;
+        while (mysqli_fetch_assoc($sqllivros)) {
+          $livros++;
+        }
+        ?>
         <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
           <div class="count-box">
             <i class="bi bi-journal-richtext"></i>
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $livros; ?>" data-purecounter-duration="1"
               class="purecounter"></span>
             <p>Livros</p>
           </div>
         </div>
-
+        <?php
+        $sqlcategorias = mysqli_query($conn, "SELECT * FROM categoria");
+        $categorias = 0;
+        while (mysqli_fetch_assoc($sqlcategorias)) {
+          $categorias++;
+        }
+        ?>
         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
           <div class="count-box">
             <i class="bi bi-headset"></i>
-            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
-              class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $categorias; ?>"
+              data-purecounter-duration="1" class="purecounter"></span>
             <p>Categorias de livro</p>
           </div>
         </div>
-
+        <?php
+        $sqlfuncionarios = mysqli_query($conn, "SELECT * FROM users WHERE isCargo = 'admin'");
+        $funcionarios = 0;
+        while (mysqli_fetch_assoc($sqlfuncionarios)) {
+          $funcionarios++;
+        }
+        ?>
         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
           <div class="count-box">
             <i class="bi bi-people"></i>
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
-              class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $funcionarios; ?>"
+              data-purecounter-duration="1" class="purecounter"></span>
             <p>funcionarios</p>
           </div>
         </div>
@@ -167,7 +192,9 @@ if (!isset($_SESSION['idUser'])) {
 
     </div>
   </section><!-- End Counts Section -->
-
+  <?php
+  $podium = mysqli_query($conn, "SELECT * FROM users WHERE status = 'aprovado' ORDER BY livrosEntregue DESC ");
+  ?>
   <main id="main">
     <!-- ======= Podium Section ======= -->
     <section id="podium" class="podium">
@@ -179,66 +206,27 @@ if (!isset($_SESSION['idUser'])) {
           </div>
           <div class=" podium-div" data-aos="fade-up">
             <div class="listaleitores">
-              <div class="leitores">
-                <div class="leitor-nome">
-                  <img src="assets/img/gallery/gallery-1.jpg" alt="">
-                  <div class="leitor-title">
-                    <strong>Luiz Gustavo</strong>
-                    <p>Curso: Administração</p>
+              <?php
+              $podiumqnt = 0;
+              while ($row = mysqli_fetch_assoc($podium)) {
+              if($podiumqnt < 5){
+                echo "
+              <div class='leitores'>
+                <div class='leitor-nome'>
+                  <img src='images-user/". $row['img']."' alt=''>
+                  <div class='leitor-title'>
+                    <strong>". $row['nome'] ."</strong>
+                    <p>Curso: ". $row['curso']."</p>
                   </div>
                 </div>
-                <div class="leitor-pontuacao">
-                  <strong>12</strong>
+                <div class='leitor-pontuacao'>
+                  <strong>". $row['livrosEntregue']."</strong>
                 </div>
-              </div>
-              <div class="leitores">
-                <div class="leitor-nome">
-                  <img src="assets/img/gallery/gallery-1.jpg" alt="">
-                  <div class="leitor-title">
-                    <strong>Luiz Gustavo</strong>
-                    <p>Curso: Administração</p>
-                  </div>
-                </div>
-                <div class="leitor-pontuacao">
-                  <strong>12</strong>
-                </div>
-              </div>
-              <div class="leitores">
-                <div class="leitor-nome">
-                  <img src="assets/img/gallery/gallery-1.jpg" alt="">
-                  <div class="leitor-title">
-                    <strong>Luiz Gustavo</strong>
-                    <p>Curso: Administração</p>
-                  </div>
-                </div>
-                <div class="leitor-pontuacao">
-                  <strong>12</strong>
-                </div>
-              </div>
-              <div class="leitores">
-                <div class="leitor-nome">
-                  <img src="assets/img/gallery/gallery-1.jpg" alt="">
-                  <div class="leitor-title">
-                    <strong>Luiz Gustavo</strong>
-                    <p>Curso: Administração</p>
-                  </div>
-                </div>
-                <div class="leitor-pontuacao">
-                  <strong>12</strong>
-                </div>
-              </div>
-              <div class="leitores">
-                <div class="leitor-nome">
-                  <img src="assets/img/gallery/gallery-1.jpg" alt="">
-                  <div class="leitor-title">
-                    <strong>Luiz Gustavo</strong>
-                    <p>Curso: Administração</p>
-                  </div>
-                </div>
-                <div class="leitor-pontuacao">
-                  <strong>12</strong>
-                </div>
-              </div>
+              </div>";
+              }
+              $podiumqnt++;
+              }
+              ?>
             </div>
             <div class="top">
               <div class="rank2 rank">

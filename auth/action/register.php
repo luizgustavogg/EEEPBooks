@@ -58,8 +58,8 @@ if (!empty($nome) && !empty($email) && !empty($senha)) {
                                     $sql3 = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
                                     if (mysqli_num_rows($sql3) > 0) {
                                         $row = mysqli_fetch_assoc($sql3);
-                                        echo "sucesso";
-                                        $_SESSION['idUser'] = $row['idUser'];
+                                        echo "Pedido de Cadastro realizado com sucesso, Por favor esperar a 
+                                        aceitação do administrador";
                                     }
                                 } else {
                                     echo "Algo deu errado!";
@@ -69,7 +69,7 @@ if (!empty($nome) && !empty($email) && !empty($senha)) {
                             echo "Por favor, selecione um arquivo de imagem - jpgeg, jpg, png!";
                         }
                     } else {
-                        echo "Please select an image file!";
+                        echo "Por favor selecione uma foto de perfil! ";
                     }
                 }
             }
