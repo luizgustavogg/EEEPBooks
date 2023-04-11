@@ -209,41 +209,54 @@ if (!isset($_SESSION['idUser'])) {
               <?php
               $podiumqnt = 0;
               while ($row = mysqli_fetch_assoc($podium)) {
-              if($podiumqnt < 5){
-                echo "
+                if ($podiumqnt < 5) {
+                  echo "
               <div class='leitores'>
                 <div class='leitor-nome'>
-                  <img src='images-user/". $row['img']."' alt=''>
+                  <img src='images-user/" . $row['img'] . "' alt=''>
                   <div class='leitor-title'>
-                    <strong>". $row['nome'] ."</strong>
-                    <p>Curso: ". $row['curso']."</p>
+                    <strong>" . $row['nome'] . "</strong>
+                    <p>Curso: " . $row['curso'] . "</p>
                   </div>
                 </div>
                 <div class='leitor-pontuacao'>
-                  <strong>". $row['livrosEntregue']."</strong>
+                  <strong>" . $row['livrosEntregue'] . "</strong>
                 </div>
               </div>";
-              }
-              $podiumqnt++;
+                }
+                $podiumqnt++;
               }
               ?>
             </div>
             <div class="top">
-              <div class="rank2 rank">
-                <img src="assets/img/team/team-2.jpg" alt="">
-                <div class="podiumrank2">2</div>
-              </div>
-
-              <div class="rank1 rank">
-                <img src="assets/img/team/team-1.jpg" alt="">
-                <div class="podiumrank1">1</div>
-              </div>
-
-              <div class="rank3 rank">
-                <img src="assets/img/team/team-3.jpg" alt="">
-                <div class="podiumrank3">3</div>
-              </div>
-
+              <?php
+              $rankqnt = 1;
+              $rank = mysqli_query($conn, "SELECT * FROM users WHERE status = 'aprovado' ORDER BY livrosEntregue DESC ");
+              while ($row02 = mysqli_fetch_assoc($rank)) {
+                if ($rankqnt == 1) {
+                  echo "
+                <div class='rank1 rank'>
+                <img src='images-user/" . $row02['img'] . "' alt=''>
+                <div class='podiumrank1'>1</div>
+              </div>";
+                  $rankqnt++;
+                } else if ($rankqnt == 2) {
+                  echo "
+                <div class='rank2 rank'>
+                <img src='images-user/" . $row02['img'] . "' alt=''>
+                <div class='podiumrank2'>2</div>
+              </div>";
+                  $rankqnt++;
+                } else if ($rankqnt == 3) {
+                  echo "
+                <div class='rank3 rank'>
+                <img src='images-user/" . $row02['img'] . "' alt=''>
+                <div class='podiumrank3'>3</div>
+              </div>";
+                  $rankqnt++;
+                }
+              }
+              ?>
             </div>
           </div>
         </div>
