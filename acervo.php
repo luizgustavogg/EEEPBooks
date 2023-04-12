@@ -3,17 +3,17 @@ include('include/include.php');
 session_start();
 $result = "";
 if (!isset($_SESSION['idUser'])) {
-  $output = "<button class='login-nav'><a href='auth/login.php'>Fazer Login</a></button>";
+    $output = "<button class='login-nav'><a href='auth/login.php'>Fazer Login</a></button>";
 } else {
 
 
-  $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUser = " . $_SESSION['idUser']);
-  $row = mysqli_fetch_assoc($sql);
-  $sql02 = mysqli_query($conn, "SELECT * FROM users WHERE idUser = " . $_SESSION['idUser'] . " AND isCargo = 'admin'");
-  if (mysqli_num_rows($sql02)) {
-    $result = "<li><a class='nav-link scrollto' href='./admin/index.php'>Admin</a></li>";
-  }
-  $output = "  <a class='nav-link' href='profile/profile.php'>
+    $sql = mysqli_query($conn, "SELECT * FROM users WHERE idUser = " . $_SESSION['idUser']);
+    $row = mysqli_fetch_assoc($sql);
+    $sql02 = mysqli_query($conn, "SELECT * FROM users WHERE idUser = " . $_SESSION['idUser'] . " AND isCargo = 'admin'");
+    if (mysqli_num_rows($sql02)) {
+        $result = "<li><a class='nav-link scrollto' href='./admin/index.php'>Admin</a></li>";
+    }
+    $output = "  <a class='nav-link' href='profile/profile.php'>
     <img src='images-user/" . $row['img'] . "' alt='' width='40px' height='40px'
         style='border-radius: 100%'>
 </a>";
@@ -142,101 +142,43 @@ if (!isset($_SESSION['idUser'])) {
                     <!-- Wrapper for carousel items -->
                     <div class="carousel-inner">
                         <div class="item carousel-item active">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        
-                                        <div class="img-box">
-                                            <img src="images-user/1681132948vinhovjv.jpg" class="img-fluid" alt="">
+                            <div class='row'>
+                                <?php
+                                $livro = mysqli_query($conn, "SELECT * FROM livros");
+                                while ($rowlivro = mysqli_fetch_assoc($livro)) {
+                                    echo "
+                                <div class='col-sm-3'>
+                                    <div class='thumb-wrapper'>
+
+                                        <div class='img-box'>
+                                            <img src='admin/images-livros/" . $rowlivro['img'] . "' class='img-fluid'
+                                                alt='Nikon'>
                                         </div>
-                                        <div class="thumb-content">
-                                            <h4>Apple iPad</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        
-                                        <div class="img-box">
-                                            <img src="images-user/1680301790BASE04.png" class="img-fluid"
-                                                alt="Headphone">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Sony Headphone</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/macbook-air.jpg" class="img-fluid"
-                                                alt="Macbook">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Macbook Air</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/nikon.jpg" class="img-fluid"
-                                                alt="Nikon">
-                                        </div>
-                                        <div class="thumb-content">
+                                        <div class='thumb-content'>
                                             <h4>Nikon DSLR</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                            <div class='star-rating'>
+                                                <ul class='list-inline'>
+                                                    <li class='list-inline-item'><i class='fa fa-star'></i></li>
+                                                    <li class='list-inline-item'><i class='fa fa-star'></i></li>
+                                                    <li class='list-inline-item'><i class='fa fa-star'></i></li>
+                                                    <li class='list-inline-item'><i class='fa fa-star-o'></i></li>
+                                                    <li class='list-inline-item'><i class='fa fa-star-o'></i></li>
                                                 </ul>
                                             </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
+                                            <a href='#' class='btn btn-primary'>Reservar</a>
                                         </div>
                                     </div>
                                 </div>
+                                ";
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="item carousel-item">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/play-station.jpg" class="img-fluid"
                                                 alt="Play Station">
@@ -258,7 +200,7 @@ if (!isset($_SESSION['idUser'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/macbook-pro.jpg" class="img-fluid"
                                                 alt="Macbook">
@@ -280,7 +222,7 @@ if (!isset($_SESSION['idUser'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/speaker.jpg" class="img-fluid"
                                                 alt="Speaker">
@@ -302,7 +244,7 @@ if (!isset($_SESSION['idUser'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/galaxy.jpg" class="img-fluid"
                                                 alt="Galaxy">
@@ -328,7 +270,7 @@ if (!isset($_SESSION['idUser'])) {
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/iphone.jpg" class="img-fluid"
                                                 alt="iPhone">
@@ -350,7 +292,7 @@ if (!isset($_SESSION['idUser'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/canon.jpg" class="img-fluid"
                                                 alt="Canon">
@@ -372,7 +314,7 @@ if (!isset($_SESSION['idUser'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/pixel.jpg" class="img-fluid"
                                                 alt="Pixel">
@@ -394,7 +336,7 @@ if (!isset($_SESSION['idUser'])) {
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
-                                        
+
                                         <div class="img-box">
                                             <img src="/examples/images/products/watch.jpg" class="img-fluid"
                                                 alt="Watch">
