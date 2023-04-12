@@ -73,7 +73,7 @@ if (!isset($_SESSION['idUser'])) {
           <li><a class="nav-link scrollto" href="#podium">Rank</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Galeria</a></li>
           <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
-          <li><a class="nav-link scrollto" href="#">Acervo de Livros</a></li>
+          <li><a class="nav-link scrollto" href="acervo.php">Acervo de Livros</a></li>
           <?php echo $result; ?>
         </ul>
         <?php echo $output; ?>

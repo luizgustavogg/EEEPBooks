@@ -59,7 +59,7 @@ if (isset($_SESSION['idUser'])) {
                     <li><a class="nav-link scrollto" href="../index.php#podium">Rank</a></li>
                     <li><a class="nav-link scrollto" href="../index.php#gallery">Galeria</a></li>
                     <li><a class="nav-link scrollto" href="../index.php#about">Sobre nós</a></li>
-                    <li><a class="nav-link scrollto" href="#">Acervo de Livros</a></li>
+                    <li><a class="nav-link scrollto" href="../acervo.php">Acervo de Livros</a></li>
                 </ul>
                 <button class="login-nav"><a class="" href="auth/login.php">Fazer Login</a></button>
                 <i class="bi bi-list mobile-nav-toggle"></i>
