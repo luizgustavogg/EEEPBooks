@@ -299,6 +299,18 @@ if (mysqli_num_rows($sqlentry) > 0) {
                   while ($row = mysqli_fetch_assoc($sql)) {
                     $idUserLivro = $row['idUser'];
                     $sqlUserLivro = mysqli_query($conn, "SELECT * FROM livrosemprestados WHERE FK_idUser = '$idUserLivro'");
+
+
+                    if ($row['status'] == 'aprovado') {
+                      $status = "<span class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'>";
+                    } else if ($row['status'] == 'rejeitado') {
+                      $status = "<span
+                      class='px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100'>";
+                    } else {
+                      $status = "<span
+                      class='px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-orange-700 dark:text-white-100'>";
+                    }
+
                     if (mysqli_num_rows($sqlUserLivro) > 0) {
 
                       $rowUserlivro = mysqli_fetch_assoc($sqlUserLivro);
@@ -307,36 +319,18 @@ if (mysqli_num_rows($sqlentry) > 0) {
                       $sqlLivroEmprestado = mysqli_query($conn, "SELECT * FROM livrosemprestados WHERE FK_idUser = '$idUserLivro' AND FK_idLivro = '$FK_idLivro'");
                       $rowLivro = mysqli_fetch_assoc($sqlLivroEmprestado);
                       $livroemprestado = "<td class='px-4 py-3 text-xs'>
-                      <span
-                        class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
-                      >
+                      " . $status . "
                      " . $rowlivro['titulo'] . "
                       </span>
                     </td>";
                     } else {
                       $livroemprestado = "<td class='px-4 py-3 text-xs'>
-                      <span
-                        class='px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-green-700 dark:text-green-100'
-                      >
+                      " . $status . "
                      Nenhum
                       </span>
                     </td>";
                     }
 
-                    if ($row['status'] == 'aprovado') {
-                      $status = "<span
-                      class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
-                    >
-                    Conta " . $row['status'] . "
-                    </span>";}
-                    else{
-                      $status="<span
-                      class='px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100'
-                    >
-                    Conta " . $row['status'] . "
-                    </span>";
-                    }
-                    
                     echo "
                     <tr class='text-gray-700 dark:text-gray-400'>
                       <td class='px-4 py-3'>
@@ -359,7 +353,7 @@ if (mysqli_num_rows($sqlentry) > 0) {
                           <div>
                             <p class='font-semibold'>" . $row['nome'] . "</p>
                             <p class='text-xs text-gray-600 dark:text-gray-400'>
-                             " . $row['isCargo'] . "
+                             " . $row['curso'] . " ". $row['ano'] . "
                             </p>
                           </div>
                         </div>
@@ -368,13 +362,11 @@ if (mysqli_num_rows($sqlentry) > 0) {
                       " . $row['email'] . "
                       </td>
                       <td class='px-4 py-3 text-xs'>
-                        ". $status ."
+                        " . $status . "Conta: " . $row['status'] . "</span>
                       </td>
 
                       <td class='px-4 py-3 text-xs'>
-                        <span
-                          class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
-                        >
+                       " . $status . "
                         Livros Entregue " . $row['livrosEntregue'] . "
                         </span>
                       </td>

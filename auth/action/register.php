@@ -59,8 +59,7 @@ if (!empty($nome) && !empty($email) && !empty($senha)) {
                                     $sql3 = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
                                     if (mysqli_num_rows($sql3) > 0) {
                                         $row = mysqli_fetch_assoc($sql3);
-                                        echo "Pedido de Cadastro realizado com sucesso, Por favor esperar a 
-                                        aceitação do administrador";
+                                        echo "Pedido de Cadastro realizado com sucesso, Por favor esperar a aceitação do administrador";
                                     }
                                 } else {
                                     echo "Algo deu errado!";

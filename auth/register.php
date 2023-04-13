@@ -76,6 +76,7 @@ if (isset($_SESSION['idUser'])) {
                             <h2>Fazer Cadastro</h2>
                         </div>
                         <div class="errortxt"></div>
+                        <div class="correctText"></div>
                         <input type="text" name="nome" placeholder="Nome" />
                         <select name="curso" id="">
                             <option value="Informática">Informática</option>

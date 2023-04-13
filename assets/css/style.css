@@ -2004,6 +2004,24 @@ section {
 
 }
 
+@media(min-width: 800px) {
+  .correctText {
+    max-width: 100%;
+  }
+}
+
+.correctText {
+  background-color: rgb(163, 255, 156);
+  padding: 10px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid rgb(163, 255, 156);
+  color: rgb(64, 169, 58);
+  display: none;
+  margin-bottom: 10px;
+
+}
+
 .container-xl {
   margin-top: 150px;
 }

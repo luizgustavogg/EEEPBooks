@@ -3,6 +3,7 @@
 const form = document.querySelector(".login-page form"),
   continueBtn = form.querySelector(".login-page button"),
   errorText = form.querySelector(".errortxt");
+  correctText = form.querySelector(".correctText");
 
 form.onsubmit = (e) => {
   e.preventDefault(); //impedindo a forma de submit
@@ -21,10 +22,13 @@ continueBtn.onclick = () => {
       if (xhr.status === 200) {
         let data = xhr.response;
         console.log(data);
-        if (data == "sucesso") {
-          location.href = '../index.php';
+        if (data == "Pedido de Cadastro realizado com sucesso, Por favor esperar a aceitação do administrador") {
+          correctText.textContent = data;
+          errorText.style.display = "none";
+          correctText.style.display = "block";
         } else {
           errorText.textContent = data;
+          correctText.style.display = "none";
           errorText.style.display = "block";
         }
       }
