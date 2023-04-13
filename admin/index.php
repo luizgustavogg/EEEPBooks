@@ -73,51 +73,31 @@ if (mysqli_num_rows($sqlentry) > 0) {
           </li>
         </ul>
         <ul>
-        <li class="relative px-6 py-3">
-          
-             <a
-               class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-               href="CadastrarLivro.php"
-             >
-               <svg
-                 class="w-5 h-5"
-                 aria-hidden="true"
-                 fill="none"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-                 stroke-width="2"
-                 viewBox="0 0 24 24"
-                 stroke="currentColor"
-               >
-                 <path
-                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                 ></path>
-               </svg>
-               <span class="ml-4">Livro</span>
-             </a>
-           </li>
-        <li class="relative px-6 py-3">
-             <a
-               class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-               href="CadastrarCategoria.php"
-             >
-               <svg
-                 class="w-5 h-5"
-                 aria-hidden="true"
-                 fill="none"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-                 stroke-width="2"
-                 viewBox="0 0 24 24"
-                 stroke="currentColor"
-               >
-                 <path
-                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                 ></path>
-               </svg>
-               <span class="ml-4">Categoria</span>
-             </a>
-           </li>
+          <li class="relative px-6 py-3">
+
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              href="CadastrarLivro.php">
+              <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                </path>
+              </svg>
+              <span class="ml-4">Livro</span>
+            </a>
+          </li>
+          <li class="relative px-6 py-3">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              href="CadastrarCategoria.php">
+              <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                </path>
+              </svg>
+              <span class="ml-4">Categoria</span>
+            </a>
+          </li>
 
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -168,49 +148,27 @@ if (mysqli_num_rows($sqlentry) > 0) {
           </li>
         </ul>
         <ul>
-        <li class="relative px-6 py-3">
-             <a
-               class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-               href="CadastrarCategoria.php"
-             >
-               <svg
-                 class="w-5 h-5"
-                 aria-hidden="true"
-                 fill="none"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-                 stroke-width="2"
-                 viewBox="0 0 24 24"
-                 stroke="currentColor"
-               >
-                 <path
-                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                 ></path>
-               </svg>
-               <span class="ml-4">Categoria</span>
-             </a>
-           </li>
+          <li class="relative px-6 py-3">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              href="CadastrarCategoria.php">
+              <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                </path>
+              </svg>
+              <span class="ml-4">Categoria</span>
+            </a>
+          </li>
 
 
-           <li class="relative px-6 py-3">
-          <span
-            class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
-            aria-hidden="true"
-          ></span>
-            <a
-              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="CadastrarLivro.php"
-            >
-              <svg
-                class="w-5 h-5"
-                aria-hidden="true"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+          <li class="relative px-6 py-3">
+            <span class="absolute inset-y-0 left-0 w-1 bg-red-600 rounded-tr-lg rounded-br-lg"
+              aria-hidden="true"></span>
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              href="CadastrarLivro.php">
+              <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
               </svg>
               <span class="ml-4">Livro</span>
@@ -337,7 +295,7 @@ if (mysqli_num_rows($sqlentry) > 0) {
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                   <?php
-                  $sql = mysqli_query($conn, "SELECT * FROM users WHERE status = 'aprovado'");
+                  $sql = mysqli_query($conn, "SELECT * FROM users");
                   while ($row = mysqli_fetch_assoc($sql)) {
                     $idUserLivro = $row['idUser'];
                     $sqlUserLivro = mysqli_query($conn, "SELECT * FROM livrosemprestados WHERE FK_idUser = '$idUserLivro'");
@@ -352,7 +310,7 @@ if (mysqli_num_rows($sqlentry) > 0) {
                       <span
                         class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
                       >
-                     ". $rowlivro['titulo']."
+                     " . $rowlivro['titulo'] . "
                       </span>
                     </td>";
                     } else {
@@ -364,6 +322,21 @@ if (mysqli_num_rows($sqlentry) > 0) {
                       </span>
                     </td>";
                     }
+
+                    if ($row['status'] == 'aprovado') {
+                      $status = "<span
+                      class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
+                    >
+                    Conta " . $row['status'] . "
+                    </span>";}
+                    else{
+                      $status="<span
+                      class='px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100'
+                    >
+                    Conta " . $row['status'] . "
+                    </span>";
+                    }
+                    
                     echo "
                     <tr class='text-gray-700 dark:text-gray-400'>
                       <td class='px-4 py-3'>
@@ -395,11 +368,7 @@ if (mysqli_num_rows($sqlentry) > 0) {
                       " . $row['email'] . "
                       </td>
                       <td class='px-4 py-3 text-xs'>
-                        <span
-                          class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'
-                        >
-                        Conta " . $row['status'] . "
-                        </span>
+                        ". $status ."
                       </td>
 
                       <td class='px-4 py-3 text-xs'>
@@ -409,7 +378,7 @@ if (mysqli_num_rows($sqlentry) > 0) {
                         Livros Entregue " . $row['livrosEntregue'] . "
                         </span>
                       </td>
-                      ". $livroemprestado ."
+                      " . $livroemprestado . "
                       <td class='px-4 py-3 text-sm'>
                       " . $row['datac'] . "
                       </td>

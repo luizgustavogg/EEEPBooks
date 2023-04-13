@@ -4,6 +4,7 @@ session_start();
 include_once("../../include/include.php");
 $nome = mysqli_real_escape_string($conn, $_POST['nome']);
 $curso = mysqli_real_escape_string($conn, $_POST['curso']);
+$ano = mysqli_real_escape_string($conn, $_POST['ano']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $senha = mysqli_real_escape_string($conn, md5($_POST['senha']));
 $rf = mysqli_real_escape_string($conn, $_POST['senha']);
@@ -52,8 +53,8 @@ if (!empty($nome) && !empty($email) && !empty($senha)) {
                                 $livrosEntregue = 0;
                                 // inserir todos os dados do usuário dentro da tabela
 
-                                $sql2 = mysqli_query($conn, "INSERT INTO users (idUser, isCargo, status, datac, livrosEntregue, nome, curso, email, senha, img )
-                                      VALUES('$random_id','$isCargo','$status', '$hoje', '$livrosEntregue', '$nome', '$curso', '$email', '$senha', '$new_img_name') ");
+                                $sql2 = mysqli_query($conn, "INSERT INTO users (idUser, isCargo, status, datac, livrosEntregue, nome, curso, ano, email, senha, img )
+                                      VALUES('$random_id','$isCargo','$status', '$hoje', '$livrosEntregue', '$nome', '$curso', '$ano', '$email', '$senha', '$new_img_name') ");
                                 if ($sql2) { //se esses dados inseridos
                                     $sql3 = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
                                     if (mysqli_num_rows($sql3) > 0) {

@@ -134,20 +134,21 @@ if (!isset($_SESSION['idUser'])) {
                 <h2>Livros Mais <b>Procurados</b></h2>
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
                     <!-- Carousel indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
+
                     <!-- Wrapper for carousel items -->
                     <div class="carousel-inner">
                         <div class="item carousel-item active">
                             <div class='row'>
                                 <?php
                                 $livro = mysqli_query($conn, "SELECT * FROM livros");
+                                $livroqnt = 0;
                                 while ($rowlivro = mysqli_fetch_assoc($livro)) {
-                                    echo "
-                                <div class='col-sm-3'>
+                                    if ($livroqnt < 8) {
+                                        $idCategoria = $rowlivro['FK_idCategoria'];
+                                        $sqlcategoria = mysqli_query($conn, "SELECT * FROM categoria WHERE idCategoria = '$idCategoria'");
+                                        $row02 = mysqli_fetch_assoc($sqlcategoria);
+                                        echo "
+                                <div class='col-sm-3' style='margin-top: 100px'>
                                     <div class='thumb-wrapper'>
 
                                         <div class='img-box'>
@@ -158,11 +159,7 @@ if (!isset($_SESSION['idUser'])) {
                                             <h4>Nikon DSLR</h4>
                                             <div class='star-rating'>
                                                 <ul class='list-inline'>
-                                                    <li class='list-inline-item'><i class='fa fa-star'></i></li>
-                                                    <li class='list-inline-item'><i class='fa fa-star'></i></li>
-                                                    <li class='list-inline-item'><i class='fa fa-star'></i></li>
-                                                    <li class='list-inline-item'><i class='fa fa-star-o'></i></li>
-                                                    <li class='list-inline-item'><i class='fa fa-star-o'></i></li>
+                                                    <p>" . $row02['titulo'] . "</p>
                                                 </ul>
                                             </div>
                                             <a href='#' class='btn btn-primary'>Reservar</a>
@@ -170,202 +167,63 @@ if (!isset($_SESSION['idUser'])) {
                                     </div>
                                 </div>
                                 ";
+                                        $livroqnt++;
+                                    }
                                 }
                                 ?>
                             </div>
                         </div>
-                        <div class="item carousel-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><b>Romance</b></h2>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <!-- Carousel indicators -->
 
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/play-station.jpg" class="img-fluid"
-                                                alt="Play Station">
+                    <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item carousel-item active">
+                            <div class='row'>
+                                <?php
+                                $romance = mysqli_query($conn, "SELECT * FROM livros WHERE FK_idCategoria = '1281841730'");
+                                $livroqnt = 0;
+                                while ($rowlivro = mysqli_fetch_assoc($romance)) {
+                                    if ($livroqnt < 8) {
+                                        $idCategoria = $rowlivro['FK_idCategoria'];
+                                        $sqlcategoria = mysqli_query($conn, "SELECT * FROM categoria WHERE idCategoria = '$idCategoria'");
+                                        $row02 = mysqli_fetch_assoc($sqlcategoria);
+                                        echo "
+                                <div class='col-sm-3' style='margin-top: 100px'>
+                                    <div class='thumb-wrapper'>
+
+                                        <div class='img-box'>
+                                            <img src='admin/images-livros/" . $rowlivro['img'] . "' class='img-fluid'
+                                                alt='Nikon'>
                                         </div>
-                                        <div class="thumb-content">
-                                            <h4>Sony Play Station</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                        <div class='thumb-content'>
+                                            <h4>Nikon DSLR</h4>
+                                            <div class='star-rating'>
+                                                <ul class='list-inline'>
+                                                    <p>" . $row02['titulo'] . "</p>
                                                 </ul>
                                             </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
+                                            <a href='#' class='btn btn-primary'>Reservar</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/macbook-pro.jpg" class="img-fluid"
-                                                alt="Macbook">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Macbook Pro</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/speaker.jpg" class="img-fluid"
-                                                alt="Speaker">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Bose Speaker</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/galaxy.jpg" class="img-fluid"
-                                                alt="Galaxy">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Samsung Galaxy S8</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item carousel-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/iphone.jpg" class="img-fluid"
-                                                alt="iPhone">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Apple iPhone</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/canon.jpg" class="img-fluid"
-                                                alt="Canon">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Canon DSLR</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/pixel.jpg" class="img-fluid"
-                                                alt="Pixel">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Google Pixel</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-
-                                        <div class="img-box">
-                                            <img src="/examples/images/products/watch.jpg" class="img-fluid"
-                                                alt="Watch">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Apple Watch</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-primary">Reservar</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                ";
+                                        $livroqnt++;
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
-                    <!-- Carousel controls -->
-                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 </div>
             </div>
         </div>

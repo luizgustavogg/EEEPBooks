@@ -67,7 +67,7 @@ if (isset($_SESSION['idUser'])) {
         </div>
     </header><!-- End Header -->
 
-    <div class="login">
+    <div class="login" style='margin-bottom: 100px'>
         <div class="content">
             <div class="login-page">
                 <div class="form" id="sd">
@@ -81,6 +81,11 @@ if (isset($_SESSION['idUser'])) {
                             <option value="Informática">Informática</option>
                             <option value="Agroindustria">Agroindustria</option>
                             <option value="Adminstração">Adminstração</option>
+                        </select>
+                        <select name="ano" id="">
+                            <option value="1º Ano">1º Ano</option>
+                            <option value="2º Ano">2º Ano</option>
+                            <option value="3º Ano">3º Ano</option>
                         </select>
                         <input type="email" name="email" placeholder="E-mail" />
                         <input type="password" name="senha" placeholder="Senha" />
